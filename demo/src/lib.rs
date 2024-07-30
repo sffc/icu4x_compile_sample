@@ -1,11 +1,13 @@
+extern crate alloc;
+
 pub mod provider {
     pub struct Baked;
 
     const _: () = {
-        use icu_experimental_data::*;
+        use experimental_data::*;
         pub mod icu {
             pub use icu_experimental as experimental;
-            pub use icu_experimental_data::icu_locale as locale;
+            pub use experimental_data::icu_locale as locale;
         }
         make_provider!(Baked);
 

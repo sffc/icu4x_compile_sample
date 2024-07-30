@@ -1,4 +1,5 @@
 [workspace]
+resolver = "2"
 members = [
 	"demo",
     "experimental_data",
@@ -7,4 +8,8 @@ members = [
 [workspace.dependencies]
 icu_experimental = { path = "../../projects/icu4x/components/experimental", default-features = false }
 icu_locale = { path = "../../projects/icu4x/components/locale", default-features = false }
+icu_provider = { path = "../../projects/icu4x/provider/core", default-features = false }
 icu_provider_baked = { path = "../../projects/icu4x/provider/baked", default-features = false }
+icu_pattern = { path = "../../projects/icu4x/utils/pattern", default-features = false }
+zerotrie = { path = "../../projects/icu4x/utils/zerotrie", default-features = false }
+zerovec = { path = "../../projects/icu4x/utils/zerovec", default-features = false }

@@ -6,4 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+icu_experimental = { workspace = true }
+icu_pattern = { workspace = true }
+icu_provider = { workspace = true }
+zerotrie = { workspace = true }
+zerovec = { workspace = true }
+
 experimental_data = { path = "../experimental_data" }

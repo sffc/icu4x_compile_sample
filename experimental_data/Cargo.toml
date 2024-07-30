@@ -13,5 +13,5 @@ edition = "2021"
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(icu4x_custom_data)'] }
 
 [dependencies]
-icu_provider_baked = { path = "../../../projects/icu4x/provider/baked" }
-icu_locale = { path = "../../../projects/icu4x/components/locale" }
+icu_provider_baked = { workspace = true }
+icu_locale = { workspace = true, features = ["compiled_data"] }
