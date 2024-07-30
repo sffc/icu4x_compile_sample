@@ -7,10 +7,8 @@ name = "demo"
 version = "0.1.0"
 dependencies = [
  "experimental_data",
- "icu_pattern",
  "icu_plurals",
  "icu_provider",
- "zerotrie",
  "zerovec",
 ]
 
@@ -24,12 +22,6 @@ dependencies = [
  "quote",
  "syn",
 ]
-
-[[package]]
-name = "either"
-version = "1.13.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "60b1af1c220855b6ceac025d3f6ecdd2b7c4894bfe9cd9bda4fbb4bc7c0d4cf0"
 
 [[package]]
 name = "experimental_data"
@@ -76,15 +68,6 @@ name = "icu_locale_data"
 version = "1.5.0"
 dependencies = [
  "icu_provider_baked",
-]
-
-[[package]]
-name = "icu_pattern"
-version = "0.2.0"
-dependencies = [
- "displaydoc",
- "either",
- "writeable",
 ]
 
 [[package]]
@@ -223,9 +206,6 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 [[package]]
 name = "writeable"
 version = "0.5.5"
-dependencies = [
- "either",
-]
 
 [[package]]
 name = "yoke"
