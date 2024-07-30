@@ -40,4 +40,4 @@ macro_rules! __impl_units_info_v1_marker {
     };
 }
 #[doc(inline)]
-pub use crate::__impl_units_info_v1_marker as impl_units_info_v1_marker;
+pub use __impl_units_info_v1_marker as impl_units_info_v1_marker;
