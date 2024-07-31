@@ -30,6 +30,17 @@ pub struct UnitsDisplayNameV1<'data> {
     pub patterns: ZeroMap<'data, Count, str>,
 }
 
+impl<'data> UnitsDisplayNameV1<'data> {
+    pub const unsafe fn from_bytes_unchecked(count_zv: &'data [u8], str_vzv: &'data [u8]) -> Self {
+        Self {
+            patterns: zerovec::ZeroMap::from_parts_unchecked(
+                unsafe { zerovec::ZeroVec::from_bytes_unchecked(count_zv) },
+                unsafe { zerovec::VarZeroVec::from_bytes_unchecked(str_vzv) },
+            ),
+        }
+    }
+}
+
 // TODO: revise this.
 // TODO(younies): add a field to store the most commonly used unit pattern as the default.
 /// Represents either a CLDR plural keyword or the explicit value 1.
