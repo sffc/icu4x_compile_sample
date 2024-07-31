@@ -5,9 +5,12 @@ mod structs;
 pub mod provider {
     pub struct Baked;
 
-
+    #[allow(unused_imports)]
     const _: () = {
+        use crate::structs::*;
         use experimental_data::*;
+        use zerovec::*;
+
         pub mod icu {
             pub use experimental_data::icu_locale as locale;
 
