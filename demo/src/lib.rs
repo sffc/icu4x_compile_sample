@@ -5,6 +5,7 @@ pub mod icu {
         pub mod dimension {
             pub mod provider {
                 pub mod units {
+                    // this typedef is not exactly what is in ICU4X but it makes the code compile with fewer overall types
                     pub type UnitsDisplayNameV1Marker = UnitsDisplayNameV1<'static>;
                     impl crate::icu_provider::DataMarker for UnitsDisplayNameV1Marker {
                         const INFO: crate::icu_provider::DataMarkerInfo =
@@ -29,7 +30,7 @@ pub mod icu {
         }
     }
     pub mod locale {
-        #[derive(Clone)]
+        #[derive(Copy, Clone)]
         pub struct DataLocale {}
         impl DataLocale {
             pub fn is_default(&self) -> bool {
@@ -74,10 +75,12 @@ pub mod icu {
             pub struct PluralElementsPackedCow<'a> {
                 pub elements: alloc::borrow::Cow<'a, PluralElementsPackedULE>,
             }
-            pub struct PluralElementsPackedULE;
+            #[repr(transparent)]
+            pub struct PluralElementsPackedULE([u8]);
             impl PluralElementsPackedULE {
-                pub const fn from_byte_slice_unchecked(_: &[u8]) -> &Self {
-                    unimplemented!()
+                pub const fn from_byte_slice_unchecked(bytes: &[u8]) -> &Self {
+                    // Safety: repr(transparent)
+                    unsafe { core::mem::transmute(bytes) }
                 }
             }
             impl ToOwned for PluralElementsPackedULE {
@@ -100,11 +103,11 @@ pub mod icu_provider_baked {
 
     pub mod zerotrie {
         pub struct Data<T: 'static> {
-            trie: ZeroTrieSimpleAscii,
-            values: &'static [T; 25203],
+            pub trie: ZeroTrieSimpleAscii,
+            pub values: &'static [T; 25203],
         }
         pub struct ZeroTrieSimpleAscii {
-            store: &'static [u8],
+            pub store: &'static [u8],
         }
     }
 }
@@ -119,6 +122,7 @@ pub mod icu_provider {
             unimplemented!()
         }
     }
+    #[derive(Copy, Clone)]
     pub struct DataIdentifierBorrowed {
         pub marker_attributes: (),
         pub locale: crate::icu::locale::DataLocale,
