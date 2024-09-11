@@ -3,8 +3,3 @@ members = [
 	"demo",
     "experimental_data",
 ]
-
-[workspace.dependencies]
-icu_experimental = { path = "../../projects/icu4x/components/experimental" }
-icu_locale = { path = "../../projects/icu4x/components/locale" }
-icu_provider_baked = { path = "../../projects/icu4x/provider/baked" }

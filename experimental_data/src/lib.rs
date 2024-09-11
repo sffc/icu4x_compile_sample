@@ -11,8 +11,6 @@
 // The source is not readable and is massive as HTML.
 #![doc(html_no_source)]
 
-include!("../data/mod.rs");
+#![allow(macro_expanded_macro_exports_accessed_by_absolute_paths)]
 
-#[rustfmt::skip]
-pub use icu_provider_baked;
-pub use icu_locale;
+include!("../data/mod.rs");
